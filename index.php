@@ -42,30 +42,27 @@
 <body>
     <div class="container">
         <h1>Random Locations</h1>
-        <?php
-        // JSON uit de lijst
-        $jsonData = file_get_contents('data/locations.json');
+        <div id="randomLocation"></div>
+        <button id="randomButton">Show me a random location (new tab)</button>
 
-        // JSON naar een array
-        $data = json_decode($jsonData, true);
-
-        // Check if data is not empty
-        if (!empty($data['locations'])) {
-            // Display the list of locations
-            echo '<ul>';
-            foreach ($data['locations'] as $location) {
-                echo '<li><a href="' . $location['url'] . '" target="_blank">' . $location['url'] . '</a></li>';
-            }
-            echo '</ul>';
-
-            // Button to redirect to a random location
-            $randomIndex = array_rand($data['locations']);
-            $randomUrl = $data['locations'][$randomIndex]['url'];
-            echo '<button onclick="window.open(\'' . $randomUrl . '\', \'_blank\')">Show me a random location (new tab)</button>';
-        } else {
-            echo 'No locations found.';
-        }
-        ?>
+        <script>
+            document.getElementById('randomButton').addEventListener('click', function() {
+                fetch('data/locations.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.locations.length > 0) {
+                            const randomIndex = Math.floor(Math.random() * data.locations.length);
+                            const randomUrl = data.locations[randomIndex].url;
+                            document.getElementById('randomLocation').innerHTML = `<a href="${randomUrl}" target="_blank">${randomUrl}</a>`;
+                        } else {
+                            document.getElementById('randomLocation').textContent = 'No locations found.';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                    });
+            });
+        </script>
     </div>
 </body>
 </html>
