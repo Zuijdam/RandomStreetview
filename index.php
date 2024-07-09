@@ -54,7 +54,7 @@
             // Display the list of locations
             echo '<ul>';
             foreach ($data['locations'] as $location) {
-                echo '<li><a href="' . $location['url'] . '" target="_blank">' . $location['name'] . '</a></li>';
+                echo '<li><a href="' . $location['url'] . '" target="_blank">' . $location['url'] . '</a></li>';
             }
             echo '</ul>';
 
