@@ -23,18 +23,18 @@
             color: #333;
         }
 
-        button {
+        a {
+            display: inline-block;
             padding: 10px 20px;
             font-size: 16px;
             background-color: #007bff;
             color: white;
-            border: none;
-            cursor: pointer;
+            text-decoration: none;
             border-radius: 5px;
             margin-top: 20px;
         }
 
-        button:hover {
+        a:hover {
             background-color: #0056b3;
         }
     </style>
@@ -43,11 +43,13 @@
 <body>
     <div class="container">
         <h1>Random streetmap locatie!</h1>
-        <button id="randomLocationBtn">Verras me! (nieuwe tab)</button>
+        <a id="randomLocationLink" href="#">Verras me! (nieuwe tab)</a>
     </div>
 
     <script>
-        document.getElementById('randomLocationBtn').addEventListener('click', async function() {
+        document.getElementById('randomLocationLink').addEventListener('click', async function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+
             const response = await fetch('/data/locations.json');
             const data = await response.json();
             const locations = data.locations;
@@ -55,20 +57,13 @@
             const randomIndex = Math.floor(Math.random() * locations.length);
             const randomLocation = locations[randomIndex].url;
 
-            // Create an anchor element
-            const link = document.createElement('a');
-            link.href = randomLocation;
-            link.target = '_blank';
-
-            // Simulate a click on the anchor element
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            window.open(randomLocation, '_blank');
         });
 
         // Add touch event for mobile devices
-        document.getElementById('randomLocationBtn').addEventListener('touchstart', function() {
-            document.getElementById('randomLocationBtn').click();
+        document.getElementById('randomLocationLink').addEventListener('touchstart', function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            document.getElementById('randomLocationLink').click();
         });
     </script>
 </body>
