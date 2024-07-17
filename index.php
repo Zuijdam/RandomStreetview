@@ -69,8 +69,14 @@
             link.click();
             document.body.removeChild(link);
         });
+
+        // Add touch event for mobile devices
+        document.getElementById('randomLocationBtn').addEventListener('touchstart', function() {
+            document.getElementById('randomLocationBtn').click();
+        });
     </script>
 
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 
 </html>
