@@ -45,7 +45,7 @@
 <body>
     <div class="container">
         <h1>Random streetmap locatie!</h1>
-        <button id="randomLocationBtn">Verras me!<i class="fas fa-external-link-alt"></i></button>
+        <button id="randomLocationBtn">Verras me! (nieuwe tab)<i class="fas fa-external-link-alt"></i></button>
     </div>
 
     <script>
