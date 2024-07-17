@@ -17,7 +17,7 @@
         document.getElementById('randomLocationLink').addEventListener('click', function(event) {
             event.preventDefault();
             
-            fetch('https://raw.githubusercontent.com/geensnor/DigitaleTuin/master/_data/facebook-schandalen.json')
+            fetch('https://raw.githubusercontent.com/geensnor/DigitaleTuin/master/_data/streetviews.json')
                 .then(response => response.json())
                 .then(data => {
                     const locations = data.map(item => item.streetview);
