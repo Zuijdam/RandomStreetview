@@ -4,27 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Location Viewer</title>
+    <title>Random Streetview Location</title>
 </head>
 
 <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #fbe3e8;">
     <div style="text-align: center; margin-top: 20vh;">
-        <h1 style="font-size: 2em; color: #333;">Random streetmap locatie!</h1>
-        <a id="randomLocationLink" href="#" style="display: inline-block; padding: 10px 20px; font-size: 16px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px;">Verras me! (nieuwe tab)</a>
+        <h1 style="font-size: 2em; color: #333;">Random Streetview Locatie!</h1>
+        <a id="randomLocationLink" href="#" style="display: inline-block; padding: 10px 20px; font-size: 16px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px;">Verras me!</a>
     </div>
 
     <script>
         document.getElementById('randomLocationLink').addEventListener('click', function(event) {
             event.preventDefault();
-
-            fetch('/data/locations.json')
+            
+            fetch('https://raw.githubusercontent.com/geensnor/DigitaleTuin/master/_data/facebook-schandalen.json')
                 .then(response => response.json())
                 .then(data => {
-                    const locations = data.locations;
+                    const locations = data.map(item => item.streetview);
                     const randomIndex = Math.floor(Math.random() * locations.length);
-                    const randomLocation = locations[randomIndex].url;
-
-                    window.location.href = randomLocation;
+                    const randomLocation = locations[randomIndex];
+                    
+                    if (randomLocation) {
+                        window.location.href = randomLocation;
+                    } else {
+                        console.error('No valid streetview URL found');
+                    }
                 })
                 .catch(error => console.error('Error:', error));
         });
