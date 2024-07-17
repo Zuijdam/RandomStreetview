@@ -9,9 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lPAAAAABJRU5ErkJggg==');
-            /* Base64 encoded 1x1 pixel transparent PNG for a subtle pattern */
+            background-color: #fbe3e8;
         }
 
         .container {
@@ -46,8 +44,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Random Location Viewer</h1>
-        <button id="randomLocationBtn">Show Random Location <i class="fas fa-external-link-alt"></i></button>
+        <h1>Random streetmap locatie!</h1>
+        <button id="randomLocationBtn">Verras me!<i class="fas fa-external-link-alt"></i></button>
     </div>
 
     <script>
