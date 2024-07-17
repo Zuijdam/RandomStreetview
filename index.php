@@ -37,17 +37,13 @@
         button:hover {
             background-color: #0056b3;
         }
-
-        button i {
-            margin-left: 5px;
-        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <h1>Random streetmap locatie!</h1>
-        <button id="randomLocationBtn">Verras me! (nieuwe tab)<i class="fas fa-external-link-alt"></i></button>
+        <button id="randomLocationBtn">Verras me! (nieuwe tab)</button>
     </div>
 
     <script>
@@ -75,8 +71,6 @@
             document.getElementById('randomLocationBtn').click();
         });
     </script>
-
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 
 </html>
