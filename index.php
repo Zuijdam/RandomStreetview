@@ -56,7 +56,7 @@
 
             const randomIndex = Math.floor(Math.random() * locations.length);
             const randomLocation = locations[randomIndex].url;
-            window.open(randomLocation, '_blank');
+            window.open(randomLocation);
         });
     </script>
 
