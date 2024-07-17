@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +43,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Random streetmap locatie!</h1>
@@ -56,10 +58,20 @@
 
             const randomIndex = Math.floor(Math.random() * locations.length);
             const randomLocation = locations[randomIndex].url;
-            window.open(randomLocation);
+
+            // Create an anchor element
+            const link = document.createElement('a');
+            link.href = randomLocation;
+            link.target = '_blank';
+
+            // Simulate a click on the anchor element
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         });
     </script>
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
+
 </html>
