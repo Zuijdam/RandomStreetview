@@ -1,7 +1,7 @@
 <?php
 
 // Read the JSON file
-$jsonData = file_get_contents('/data/locations.json');
+$jsonData = file_get_contents('data/locations.json');
 $data = json_decode($jsonData, true);
 
 // Get a random location
